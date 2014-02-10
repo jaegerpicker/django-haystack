@@ -60,6 +60,8 @@ class SearchResult(object):
     def __getattr__(self, attr):
         if attr == '__getnewargs__':
             raise AttributeError
+        if self.__dict__.keys().get(attr, None):
+            raise AttributeError
 
         return self.__dict__.get(attr, None)
 
